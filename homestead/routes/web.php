@@ -30,7 +30,7 @@ Route::get('/read', function(){
 	}
 });
 */
-
+/*/*
 
 Route::get('/insert', function(){
 	DB::insert('insert into posts (title, content) values (?,?)',['B laravel', 'B Laravel is the best']);  
@@ -89,7 +89,7 @@ Route::get('/find', function(){
 	return $posts->title;
 });
 
-*/
+
 
 Route::get('/findwhere', function(){
 	$posts = Post::where('id',2)->orderBy('id', 'desc')->take(1)->get();
@@ -98,13 +98,13 @@ Route::get('/findwhere', function(){
 });
 
 Route::get('/findmore', function(){
-/*	$posts = Post::findOrFail(1);
+	$posts = Post::findOrFail(1);
 	return $posts;
 
 	$posts= Post::where('id', '<', '50')->firstOrFail();
 
 
-*/
+
 });
 
 Route::get('/basicinsert', function(){
@@ -120,7 +120,7 @@ Route::get('/basicinsert', function(){
 /*
 To update using eloquent
 */
-
+/*
 Route::get('/basicinsert2', function(){
 
 	$post = Post::find(2);
@@ -130,13 +130,13 @@ Route::get('/basicinsert2', function(){
 
 	$post->save();
 });
-
+*/
 
 
 /*
 mass assignment using eloquent
 */
-
+/*
 Route::get('/create', function(){
 
 	Post::create(['title'=>'the create method', 'content'=>'I\'m learning a lot']);
@@ -147,13 +147,13 @@ Route::get('/update', function(){
 
 	Post::where('id', 2)->where('is_admin', 0)->update(['title'=>'new title updated', 'content'=>'test']);
 });
-
+*/
 
 /*
 delete using eloquent
 */
 
-Route::get('/delete',function(){
+/*Route::get('/delete',function(){
 
 	$post = Post::find(2);
 
@@ -184,13 +184,13 @@ Route::get('/forcedelete',function(){
 	Post::withTrashed()->where('id', 9)->forceDelete();
 });
 
-
+*/
 /*
 ELOQUENT Relationships
 */
 
 //One to One relationship
-Route::get('/user/{id}/post', function($id){
+/*Route::get('/user/{id}/post', function($id){
 
 	return User::find($id)->post->title;
 
@@ -211,31 +211,31 @@ Route::get('/posts', function(){
 	}
 });
 
-
+*/
 /*
 Many to many
 */
 
 
-
+/*
 Route::get('/user/{id}/role',function($id){
-/*	
+	
 	$user = User::find($id);
 
 
 	foreach ($user->roles as $role) {
 		return $role->name;
 	}
-*/
+
 
 	$user = User::find($id)->roles()->orderBy('id', 'desc')->get();
 
 	return $user;
-});
+});*/
 
 /*
 Accessing the intermediate table / pivot */
-
+/*
 Route::get('user/pivot', function(){
 
 	$user = User::find(1);
@@ -253,13 +253,13 @@ Route::get('user/country', function(){
 		return $post->title;
 	}
 
-});
+});*/
 
 /*
 Polymorphic Relations
 */
 
-Route::get('user/photos',function(){
+/*Route::get('user/photos',function(){
 	$user = User::find(1);
 
 	foreach ($user->photos as $photo) {
@@ -280,14 +280,14 @@ Route::get('photo/{id}/post', function($id){
 	$photo = Photo::findOrFail($id);
 
 	return $imageable = $photo->imageable;
-});
+});*/
 
 
 /*
 Polymorphic Many to Many
 */
 
-Route::get('/post/tag', function(){
+/*Route::get('/post/tag', function(){
 
 	$post = Post::find(1);
 
@@ -305,3 +305,9 @@ Route::get('/tag/post',function(){
 	}
 });
 
+
+
+/*|------------------------
+|Crud Application
+|-----------------------*/
+Route::resource('/posts','PostsController');
