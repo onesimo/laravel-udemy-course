@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePostRequest;
 use Illuminate\Http\Request;
 use App\Post;
 
@@ -36,7 +37,7 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
         //return 'tes';
 
@@ -44,6 +45,10 @@ class PostsController extends Controller
         //return $request->title;
         //return $request->get('title');
         //$input['title'] = $request->title;
+        /*
+        $this->validate($request,[
+            'title' => 'required|max:10' 
+        ]);*/
 
         Post::create($request->all());
         return redirect('/posts');

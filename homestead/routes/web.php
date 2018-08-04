@@ -6,9 +6,6 @@ use App\Country;
 use App\Photo;
 use App\Tag;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 /*
 Route::get('/remove', function(){
@@ -310,4 +307,15 @@ Route::get('/tag/post',function(){
 /*|------------------------
 |Crud Application
 |-----------------------*/
-Route::resource('/posts','PostsController');
+
+ 
+
+Route::group(['middleware' => ['web']], function () {
+
+
+    Route::resource('/posts','PostsController');
+    
+	Route::get('/', function () {
+	    return view('welcome');
+	});
+});
