@@ -17,7 +17,10 @@ class PostsController extends Controller
     {
         //
 
-        $posts = Post::all();
+        //$posts = Post::all();
+        //$posts = Post::latest()->get();
+        // $posts = Post::orderBy('id','asc')->get();
+        $posts = Post::latest();
         return view ('posts.index', compact('posts'));
     }
 
@@ -38,7 +41,21 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CreatePostRequest $request)
-    {
+    {   
+
+        $input = $request->all();
+
+        if($file = $request->file('file')){
+
+            $name = $file->getClientOriginalName();
+            
+            $file->move('images', $name);
+            $input['path'] = $name;
+        }
+
+        Post::create($input);
+
+        
         //return 'tes';
 
         //return $request->all();
@@ -49,10 +66,10 @@ class PostsController extends Controller
         $this->validate($request,[
             'title' => 'required|max:10' 
         ]);*/
-
+        /*
         Post::create($request->all());
         return redirect('/posts');
-        /*$post = new Post;
+        $post = new Post;
         $post->title = $request->title;
         $post->save();*/
 

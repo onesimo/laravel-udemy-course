@@ -5,6 +5,7 @@ use App\User;
 use App\Country;
 use App\Photo;
 use App\Tag;
+use Carbon\Carbon;
 
 
 /*
@@ -309,13 +310,38 @@ Route::get('/tag/post',function(){
 |-----------------------*/
 
  
+   
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::group(['middleware' => ['web']], function () {
 
 
     Route::resource('/posts','PostsController');
-    
-	Route::get('/', function () {
-	    return view('welcome');
+ 
+	    Route::get('/dates',function(){
+
+	    echo Carbon::now()->addDays(10)->diffForHumans();
+
+	    echo "<br>";
+	    echo Carbon::now()->subMonths(5)->diffForHumans();
+
+	    echo "<br>";
+	    echo Carbon::now()->yesterday();
+    });
+
+	Route::get('/getname', function(){
+		$user = User::find(1);
+
+		echo $user->name;
+	});
+
+	Route::get('/setname', function(){
+		$user = User::find(1);
+
+		$user->name = 'Jhon';
+		$user->save();
+		
 	});
 });
