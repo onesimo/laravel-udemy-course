@@ -6,9 +6,23 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
+
+@import 'css/libs/blog-post.css';
+
+@import 'css/libs/bootstrap.css';
+@import 'css/libs/bootstrap.min.css';
+@import 'css/libs/font-awesome.css';
+@import 'css/libs/metisMenu.css';
+@import 'css/libs/sb-admin-2.css';
+@import 'css/libs/styles.css';
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+
+#admin-page {
+	padding-top:0px;	
 }

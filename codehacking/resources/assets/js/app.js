@@ -7,7 +7,14 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+require('./js/libs/bootstrap.js');
+require('./js/libs/bootstrap.min.js');
+require('./js/libs/jquery.js');
+require('./js/libs/metisMenu.js');
+require('./js/libs/sb-admin-2.js');
+require('./js/libs/scripts.js');
+
+//window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +22,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+/*
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
     el: '#app'
 });
+*/
