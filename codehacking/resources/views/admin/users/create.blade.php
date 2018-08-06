@@ -37,8 +37,8 @@
 
  <div class="form-group">
 
-  {!! Form::label('file','Photo:') !!}
-  {!! Form::file('file',array(1 => 'Active', 0 => 'Not ative'),1,['class'=>'form-control']) !!}
+  {!! Form::label('photo_id','Photo:') !!}
+  {!! Form::file('photo_id',array(1 => 'Active', 0 => 'Not ative'),1,['class'=>'form-control']) !!}
   
  </div>
 
