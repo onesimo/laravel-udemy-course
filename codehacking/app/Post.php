@@ -2,7 +2,9 @@
 
 namespace App;
 
+ 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Post extends Model
 {
@@ -29,4 +31,10 @@ class Post extends Model
     {
     	return $this->belongsTo('App\Category');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
 }
