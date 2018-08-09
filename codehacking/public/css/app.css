@@ -8684,3 +8684,7 @@ table.dataTable thead .sorting:after {
   padding-top: 0px;
 }
 
+#nested-comment {
+  margin-top: 50px;
+}
+

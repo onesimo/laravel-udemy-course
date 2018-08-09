@@ -17,7 +17,7 @@ class Comment extends Model
 	];
     public function replies()
     {
-    	return hasMany('App\CommentReply');
+    	return $this->hasMany('App\CommentReply');
     }
 
     public function post()
