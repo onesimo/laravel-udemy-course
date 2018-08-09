@@ -3,6 +3,7 @@
 @section('content')
  
 	<div>
+		<h1>replies</h1>
 				<table class="table">
     <thead>
       <tr>
@@ -16,21 +17,18 @@
       </tr>
     </thead>
     <tbody>
- 	
- 	@if($comments)
-		
-		@foreach($comments as $comment)
+ 	 
+		@foreach($replies as $reply)
 		  <tr>	
-	        <td>{{$comment->id}}</td> 
-	        <td>{{$comment->author}}</td> 
-	        <td>{{$comment->email}}</td> 
-	        <td>{{$comment->body}}</td> 
-	        <td><a href="{{route('home.post', $comment->post->id)}}"> View post</a></td>
-	         <td><a href="{{route('admin.replies.show', $comment->id)}}"> View replies</a></td>
+	        <td>{{$reply->id}}</td> 
+	        <td>{{$reply->author}}</td> 
+	        <td>{{$reply->email}}</td> 
+	        <td>{{$reply->body}}</td> 
+	        <td><a href="{{route('home.post', $reply->comment->post->id)}}"> View post</a></td>
 	        <td>
-	        	@if($comment->is_active == 1)
+	        	@if($reply->is_active == 1)
 	        	
-	        		 {!! Form::open(['method'=>'PATCH', 'action' => ['PostCommentsController@update', $comment->id]]) !!}
+	        		 {!! Form::open(['method'=>'PATCH', 'action' => ['CommentRepliesController@update', $reply->id]]) !!}
 					 <input type="hidden" value="0" name="is_active">
  
 					 <div class="form-group">
@@ -42,7 +40,7 @@
 	        	
 				@else
 					 
-	        		 {!! Form::open(['method'=>'PATCH', 'action' => ['PostCommentsController@update', $comment->id]]) !!}
+	        		 {!! Form::open(['method'=>'PATCH', 'action' => ['CommentRepliesController@update', $reply->id]]) !!}
 					 <input type="hidden" value="1" name="is_active">
  
 					 <div class="form-group">
@@ -55,7 +53,7 @@
 
 	        </td>
 	        <td>
-	        	{!! Form::open(['method'=>'DELETE', 'action' => ['PostCommentsController@destroy', $comment->id]]) !!}
+	        	{!! Form::open(['method'=>'DELETE', 'action' => ['CommentRepliesController@destroy', $reply->id]]) !!}
 					 <input type="hidden" value="1" name="is_active">
  
 					 <div class="form-group">
@@ -68,8 +66,7 @@
 					</td>
 	      </tr>
       	@endforeach
-
-     @endif
+      	  
     </tbody>
   </table>
 	</div>

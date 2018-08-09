@@ -14,8 +14,9 @@ class CommentReply extends Model
 		'photo',
 		'is_active'
 	];
-    public function replies()
+
+    public function comment()
     {
-    	return belongsTo('App\Comment');
+    	return $this->belongsTo('App\Comment');
     }
 }

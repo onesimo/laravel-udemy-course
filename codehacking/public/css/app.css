@@ -8688,3 +8688,7 @@ table.dataTable thead .sorting:after {
   margin-top: 50px;
 }
 
+.comment-reply {
+  display: none;
+}
+
