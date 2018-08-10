@@ -20,7 +20,7 @@ class AdminPostsController extends Controller
      */
     public function index()
     {   
-        $posts = Post::all();
+        $posts = Post::paginate(3);
         return view('admin.posts.index',compact('posts'));
     }
 
@@ -134,9 +134,10 @@ class AdminPostsController extends Controller
 
     }
 
-    public function post($id)
-    {   
-        $post = Post::findOrFail($id);
+    public function post($slug)
+    {      
+ 
+        $post = Post::findBySlug($slug);
 
         $comments = $post->comments()->whereIsActive(1)->get();
         //return $comments;

@@ -6,8 +6,7 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1>{{$post->title}} {{$post->slug
-}}</h1>
+                <h1>{{$post->title}}</h1>
 
                 <!-- Author -->
                 <p class="lead">
@@ -69,17 +68,13 @@
                 <!-- Comment -->
                 <div class="media">
                     <a class="pull-left" href="#">
-                        <img height="64" class="media-object" src="{{$comment->photo}}" alt="">
+                        <img height="64" class="media-object" src="{{Auth::user()->gravatar}}" alt="">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">{{$comment->author}}
                             <small>{{$comment->created_at->diffForHumans()}}</small>
                         </h4>
                         {{$comment->body}}
-
-                        <div class="form-group">
-                            <button id="reply_bottom" class="btn btn-primary pull-right" onclick="reply({{$comment->id}})">reply</button>
-                        </div>
 
                         
                         <!-- @if($comment->replies) -->
@@ -108,6 +103,10 @@
                             @endforeach
                         @endif
                       
+                        <div class="form-group">
+                            <button id="reply_bottom" class="btn btn-primary pull-right" onclick="reply({{$comment->id}})">reply</button>
+                        </div>
+
                          <div class="comment-reply-container">
                    
 
@@ -130,6 +129,8 @@
                          {!! Form::close() !!}
                        </div>
                     </div>
+
+                    
                     </div>  </div>
 
 
