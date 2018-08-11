@@ -11,29 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
  
 Route::get('/post/{id}', ['as'=>'home.post', 'uses' => 'AdminPostsController@post']);
-/*Route::group(['middleware' => ['web']], function () {
-
-	
-
-});	*/
-
-
 
 Route::group(['middleware'=>'admin'], function(){
 
 
-	Route::get('/admin', function(){
-		return view('admin.index');
-	});
+	Route::get('/admin', 'AdminController@index');
 
 	Route::resource('admin/users','AdminUsersController',['as' => 'admin']);
 	Route::resource('admin/posts','AdminPostsController',['as' => 'admin']);
