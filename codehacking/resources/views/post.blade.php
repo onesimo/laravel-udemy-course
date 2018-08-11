@@ -1,8 +1,9 @@
-@extends('layouts.blog-post')
+@extends('layouts.blog-home')
 
 @section('content')
  
-
+        <div class="row">
+            <div class="col-md-8">  
                 <!-- Blog Post -->
 
                 <!-- Title -->
@@ -10,7 +11,7 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">{{$post->user->name}}</a>
+                    by {{$post->user->name}} 
                 </p>
 
                 <hr>
@@ -29,6 +30,12 @@
                <p>{!! $post->body !!}</p>
                 <hr>
 <div id="disqus_thread"></div>
+
+</div>
+@include('includes.front_side_bar')
+</div>
+
+
 <script>
 
 /**

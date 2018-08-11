@@ -9,7 +9,7 @@
 
                 <h1 class="page-header">
                     Page Heading
-                    <small>Secondary Text</small>
+                    <small>Secondary Text -</small>
                 </h1>
 
                 @if($posts)
@@ -20,7 +20,7 @@
                             <a href="post/{{$post->slug}}">{{$post->title}}</a>
                         </h2>
                         <p class="lead">
-                            by <a href="index.php">{{$post->user->name}}</a>
+                            by {{$post->user->name}} 
                         </p>
                         <p><span class="glyphicon glyphicon-time"></span> Posted {{$post->created_at->diffForHumans()}}</p>
                         <hr>
@@ -41,22 +41,7 @@
                   </div> 
             </div>
 
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-
-                <!-- Blog Search Well -->
-                <div class="well">
-                    <h4>Blog Search</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
-                    </div>
-                    <!-- /.input-group -->
-                </div>
+           
 
                 <!-- Blog Categories Well -->
                @include('includes.front_side_bar')
