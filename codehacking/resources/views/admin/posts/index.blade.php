@@ -12,10 +12,9 @@
       <tr>
         <th>Id</th>
         <th>Photo</th>
+        <th>title</th> 
         <th>Owner</th>
         <th>Category</th>
-        <th>title</th>
-        <th>body</th>
         <th>Created</th>
         <th>Updated</th>
       </tr>
@@ -27,11 +26,10 @@
 		@foreach($posts as $post)
 	  <tr>
         <td>{{$post->id}}</td> 
-        <td><img height="50" src="{{isset($post->photo) ? $post->photo->file : 'http://placehold.it/200x200'}}"></td>
-        <td><a href="{{route('admin.posts.edit',$post->id)}}">{{$post->user->name}}</a></td>
+        <td><img height="50" src="{{isset($post->photo) ? $post->photo->file : 'http://placehold.it/200x200'}}"></td> 
+        <td><a href="{{route('admin.posts.edit',$post->id)}}">{{$post->title}}</a></td> 
+        <td>{{$post->user->name}}</td>
         <td>{{$post->category ? $post->category->name : 'uncategorized'}}</td>
-        <td>{{$post->title}}</td>
-        <td>{{str_limit($post->body,12)}}</td>
         <td>{{$post->created_at->diffForHumans()}}</td>
         <td>{{$post->updated_at->diffForHumans()}}</td>
         <td><a href="{{route('home.post', $post->slug)}}">View Post</a></td>

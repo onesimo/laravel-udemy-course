@@ -104,9 +104,11 @@ class AdminPostsController extends Controller
 
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
-        }
-
-        Auth::user()->posts()->whereId($id)->first()->update($input);
+        } 
+        Post::findOrFail($id)->first()->update($input);
+        
+        //update only user posts
+        //Auth::user()->posts()->whereId($id)->first()->update($input);
 
         return redirect('/admin/posts');
     }
