@@ -45,6 +45,9 @@ Route::group(['middleware'=>'admin'], function(){
 });
 
 Route::group(['middleware'=>'auth'], function(){
+
+	Route::delete('admin/delete/media','AdminMediasController@deleteMedia');
+
 	Route::post('comment/reply','CommentRepliesController@createReply');
 });
 
